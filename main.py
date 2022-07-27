@@ -78,9 +78,6 @@ while running:
                 elif action == "reset move":
                     take_action = []
                     PF.reset_images()
-                elif action == "try again":
-                    GameBoard.resetBoard()
-                    GameBoard.populate()
                 elif action == "quit":
                     running = False
                 elif action is not None:

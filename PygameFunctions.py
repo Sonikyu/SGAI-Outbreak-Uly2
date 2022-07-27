@@ -31,12 +31,6 @@ def get_action(GameBoard: Board, pixel_x: int, pixel_y: int):
         and pixel_y >= CURE_BITE_COORDS[1]
         and pixel_y <= CURE_BITE_COORDS[1] + CURE_BITE_DIMS[1]
     )
-    try_again_check = (
-        pixel_x >= TRY_AGAIN_COORDS[0]
-        and pixel_x <= TRY_AGAIN_COORDS[0] + CURE_BITE_DIMS[0]
-        and pixel_y >= TRY_AGAIN_COORDS[1]
-        and pixel_y <= TRY_AGAIN_COORDS[1] + CURE_BITE_DIMS[1]
-    )
     kill_check = (
         pixel_x >= KILL_COORDS[0]
         and pixel_x <= KILL_COORDS[0] + CURE_BITE_DIMS[0]
@@ -76,8 +70,6 @@ def get_action(GameBoard: Board, pixel_x: int, pixel_y: int):
         return "quit"
     elif move_check:
         return board_x, board_y
-    elif try_again_check:
-        return "try again"
     return None
 
 def reset_images():
@@ -161,7 +153,6 @@ def run(GameBoard: Board):
 
     # draw the score board
     display_text(f"Score: {constants.CURRENT_SCORE}", SCORE_COORDS, 32)
-    display_text(f"Try Again?", TRY_AGAIN_COORDS, 32)
     display_text(f"Last Move:"+str(PREVIOUS_MOVE), LAST_MOVE_COORDS, 25)
     display_text(f"Steps Remaining: {100-constants.number_steps}", STEPS_COORDS, 25)
     display_text(f"QUIT?", QUIT_COORDS, 25)
