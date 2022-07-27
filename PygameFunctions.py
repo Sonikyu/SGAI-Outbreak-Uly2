@@ -297,7 +297,8 @@ def display_cur_move(cur_move: List):
     )
 
 
-def display_win_screen():
+def display_win_screen(dataCollector):
+    dataCollector.print_attributes()
     screen.fill(BACKGROUND)
     screen.blit(
         font.render("You win!", True, WHITE),
@@ -313,7 +314,8 @@ def display_win_screen():
                 return
 
 
-def display_lose_screen():
+def display_lose_screen(dataCollector):
+    dataCollector.print_attributes()
     screen.fill(BACKGROUND)
     screen.blit(
         font.render("You lose!", True, WHITE),
