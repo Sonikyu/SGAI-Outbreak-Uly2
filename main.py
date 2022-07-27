@@ -204,25 +204,28 @@ while running:
                 elif take_action[0] == "heal" or take_action[0]=="kill":
                     if GameBoard.num_zombies() > 1 or not justStarted:
                         
-                        if take_action[0]=="heal":
-                            if GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==1:
-                                dataCollector.numType1Cured+=1
-                            elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==2:
-                                dataCollector.numType2Cured+=1
-                            elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==3:
-                                dataCollector.numType3Cured+=1
-                        if take_action[0]=="kill":
-                            if GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==1:
-                                dataCollector.numType1Killed+=1
-                            elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==2:
-                                dataCollector.numType2Killed+=1
-                            elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==3:
-                                dataCollector.numType3Killed+=1
-
+                        try:
+                            if take_action[0]=="heal":
+                                if GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==1:
+                                    dataCollector.numType1Cured+=1
+                                elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==2:
+                                    dataCollector.numType2Cured+=1
+                                elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==3:
+                                    dataCollector.numType3Cured+=1
+                            if take_action[0]=="kill":
+                                if GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==1:
+                                    dataCollector.numType1Killed+=1
+                                elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==2:
+                                    dataCollector.numType2Killed+=1
+                                elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==3:
+                                    dataCollector.numType3Killed+=1
+                            dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), take_action[0], GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage)
+                        except:
+                            pass
 
                         justStarted = False
                         
-                        dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), take_action[0], GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage)
+                        
                         result = GameBoard.actionToFunction[take_action[0]](take_action[1])
                         
                         print(result)
