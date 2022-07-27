@@ -10,7 +10,7 @@ import QTrain as qt
 from DataCollection import DataCollection
 
 SELF_PLAY = True  # whether or not a human will be playing
-player_role = "Government"  # Valid options are "Government" and "Zombie"
+player_role = "Zombie"  # Valid options are "Government" and "Zombie"
 # Create the game board
 GameBoard = Board((ROWS, COLUMNS), player_role)
 qtrainer = qt.QTrain(GameBoard)
@@ -32,6 +32,8 @@ running = True
 take_action = []
 playerMoved = False
 justStarted = True
+IS_PLAYER_TURN = 1
+lose = False
 
 # DATA COLLECTION OBJECT
 dataCollector = DataCollection(len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()))

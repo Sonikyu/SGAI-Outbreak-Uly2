@@ -31,12 +31,6 @@ def get_action(GameBoard: Board, pixel_x: int, pixel_y: int):
         and pixel_y >= CURE_BITE_COORDS[1]
         and pixel_y <= CURE_BITE_COORDS[1] + CURE_BITE_DIMS[1]
     )
-    try_again_check = (
-        pixel_x >= TRY_AGAIN_COORDS[0]
-        and pixel_x <= TRY_AGAIN_COORDS[0] + CURE_BITE_DIMS[0]
-        and pixel_y >= TRY_AGAIN_COORDS[1]
-        and pixel_y <= TRY_AGAIN_COORDS[1] + CURE_BITE_DIMS[1]
-    )
     kill_check = (
         pixel_x >= KILL_COORDS[0]
         and pixel_x <= KILL_COORDS[0] + CURE_BITE_DIMS[0]
