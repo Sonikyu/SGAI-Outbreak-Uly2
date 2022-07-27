@@ -9,7 +9,7 @@ import time
 import QTrain as qt
 
 SELF_PLAY = True  # whether or not a human will be playing
-player_role = "Zombie"  # Valid options are "Government" and "Zombie"
+player_role = "Government"  # Valid options are "Government" and "Zombie"
 # Create the game board
 GameBoard = Board((ROWS, COLUMNS), player_role)
 qtrainer = qt.QTrain(GameBoard)
@@ -31,11 +31,9 @@ running = True
 take_action = []
 playerMoved = False
 justStarted = True
-IS_PLAYER_TURN = 1
-lose = False
 
 while running:
-    if constants.number_steps>=100 or lose:
+    if constants.number_steps>=100:
         PF.display_win_screen()
         running = False
         continue
@@ -63,9 +61,6 @@ while running:
                 elif action == "reset move":
                     take_action = []
                     PF.reset_images()
-                elif action == "try again":
-                    GameBoard.resetBoard()
-                    GameBoard.populate()
                 elif action == "quit":
                     running = False
                 elif action is not None:
