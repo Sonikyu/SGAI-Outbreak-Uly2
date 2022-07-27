@@ -10,7 +10,7 @@ import QTrain as qt
 from DataCollection import DataCollection
 
 SELF_PLAY = True  # whether or not a human will be playing
-player_role = "Zombie"  # Valid options are "Government" and "Zombie"
+player_role = "Government"  # Valid options are "Government" and "Zombie"
 # Create the game board
 GameBoard = Board((ROWS, COLUMNS), player_role)
 qtrainer = qt.QTrain(GameBoard)
@@ -222,7 +222,7 @@ while running:
 
                         justStarted = False
                         
-
+                        dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), take_action[0], GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage)
                         result = GameBoard.actionToFunction[take_action[0]](take_action[1])
                         
                         print(result)
@@ -237,7 +237,7 @@ while running:
                         
                         PF.reset_images()
                         GameBoard.updateMovesSinceTransformation()
-                        dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), take_action[0], GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage)
+                        
                         
                         
                         
