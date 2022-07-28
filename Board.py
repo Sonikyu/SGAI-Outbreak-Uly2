@@ -33,6 +33,7 @@ class Board:
             "bite": self.bite,
             "kill": self.kill
         }
+        self.statesSelected = [] # store the location of the state
 
     def num_zombies(self) -> int:
         r = 0
