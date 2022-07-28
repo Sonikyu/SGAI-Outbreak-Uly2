@@ -24,18 +24,20 @@ class DataCollection():
         }
         self.dataList.append(obj)
     def print_attributes (self):
-        print(f"Data List: {self.dataList}")
-        print(f"Win: {self.didWin}")
-        print(f"Starting Zombies: {self.numStartingZombies}")
-        print(f"Starting Humans: {self.numStartingHumans}")
-        print(f"Score: {self.totalScore}")
-        print(f"Total Moves: {self.totalMoves}")
-        print(f"Num People Turned to Zombies: {self.numPeopleTurnedToZombies}")
-        print(f"Type 1 Cured Attempts: {self.numType1Cured}")
-        print(f"Type 2 Cured Attempts: {self.numType2Cured}")
-        print(f"Type 3 Cured Attempts: {self.numType3Cured}")
-        print(f"Type 1 Killed: {self.numType1Killed}")
-        print(f"Type 2 Killed: {self.numType2Killed}")
-        print(f"Type 3 Killed: {self.numType3Killed}")
-        with open('LatestGameData.txt', "w"):
-            pass
+        string = f"""
+        Data List: {self.dataList}
+        Win: {self.didWin}
+        Starting Zombies: {self.numStartingZombies}
+        Starting Humans: {self.numStartingHumans}
+        Score: {self.totalScore}
+        Total Moves: {self.totalMoves}
+        Num People Turned to Zombies: {self.numPeopleTurnedToZombies}
+        Type 1 Cured Attempts: {self.numType1Cured}
+        Type 2 Cured Attempts: {self.numType2Cured}
+        Type 3 Cured Attempts: {self.numType3Cured}
+        Type 1 Killed: {self.numType1Killed}
+        Type 2 Killed: {self.numType2Killed}
+        Type 3 Killed: {self.numType3Killed}"""
+        print(string)
+        with open('LatestGameData.txt', "w") as f:
+            f.write(string)
