@@ -216,8 +216,6 @@ class QTrain:
             total_reward += constants.SCORE_VALUES["kill"]
         if self.check_win(step):
             total_reward += 1000-step*2+len(livingPeople)*100
-        if len(actList) is 4 and actList[2] is not actList[3] and actList[2:3] is actList[0:1]:
-            total_reward += constants.SCORE_VALUES["repetitiveMove"]
         return total_reward
     
     def assign_reward_realtime(self, success, action, wasBitten):
