@@ -38,10 +38,10 @@ def get_action(GameBoard: Board, pixel_x: int, pixel_y: int):
         and pixel_y <= KILL_COORDS[1] + CURE_BITE_DIMS[1]
     )
     reset_move_check = (
-        pixel_x >= RESET_MOVE_COORDS[0]
-        and pixel_x <= RESET_MOVE_COORDS[0] + RESET_MOVE_DIMS[0]
-        and pixel_y >= RESET_MOVE_COORDS[1]
-        and pixel_y <= RESET_MOVE_COORDS[1] + RESET_MOVE_DIMS[1]
+        pixel_x >= CLEAR_COORDS[0]
+        and pixel_x <= CLEAR_COORDS[0] + CURE_BITE_DIMS[0]
+        and pixel_y >= CLEAR_COORDS[1]
+        and pixel_y <= CLEAR_COORDS[1] + CURE_BITE_DIMS[1]
     )
     quit_check = (
         pixel_x >= QUIT_COORDS[0]
@@ -103,13 +103,16 @@ def get_last_move(player, move, success):
         IS_TURN = True
     elif (move == 'move'):
         if (player == 'Government'):
-            PREVIOUS_MOVE = ' Just made a valid move!'
+            PREVIOUS_MOVE = ' human moved'
             IS_TURN = False
         else:
-            PREVIOUS_MOVE = ' Zombie just made a move!'
+            PREVIOUS_MOVE = ' zombie moved'
             IS_TURN = True
     else:
-        PREVIOUS_MOVE = ' The last move was ' + str(move) +' and it was a success: '+ str(success)
+        if (success) :
+            PREVIOUS_MOVE = ' ' + str(move) +' succeeded'
+        else:
+            PREVIOUS_MOVE = ' ' + str(move) +' failed '
         if (player == 'Government'):
             IS_TURN = False
         else:
@@ -129,7 +132,16 @@ def run(GameBoard: Board):
     build_grid(GameBoard)  # Draw the grid
     # Draw the heal icon
     if GameBoard.player_role == "Government":
-
+        pygame.draw.rect(
+            screen,
+            DIVIDER_COLOR,
+            [
+                RIGHT_DIVIDER_COORDS[0],
+                RIGHT_DIVIDER_COORDS[1],
+                KEY_DIMS[0],
+                KEY_DIMS[1],
+            ],
+        )
        
         if HEART_SELECTED:
             display_image(screen, "Assets/highlighted heart icon.png", CURE_BITE_DIMS, CURE_BITE_COORDS)
@@ -149,9 +161,11 @@ def run(GameBoard: Board):
     else:
         display_image(screen, "Assets/bite.png", CURE_BITE_DIMS, CURE_BITE_COORDS)
     display_people(GameBoard)
-    display_reset_move_button()
+    #display_reset_move_button()
 
-    # draw the score board
+    #static ui 
+    display_image(screen, "Assets/clear move icon.png", CURE_BITE_DIMS, CLEAR_COORDS)
+    display_image(screen, "Assets/key.png", KEY_DIMS, KEY_COORDS)
     display_text(f"Score: {constants.CURRENT_SCORE}", SCORE_COORDS, 25)
     display_text(f"Last Move:"+str(PREVIOUS_MOVE), LAST_MOVE_COORDS, 25)
     display_text(f"Steps Left: {100-constants.number_steps}", STEPS_COORDS, 25)

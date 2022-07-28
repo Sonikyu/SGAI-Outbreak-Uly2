@@ -184,7 +184,7 @@ while running:
                     result = GameBoard.actionToFunction[action](move_coord, prev_state.person.zombieStage)
 
                     PF.get_last_move('Zombie','bite',result[2])
-                    GameBoard.statesSelected.append(prev_state.location)
+                    # GameBoard.statesSelected.append(prev_state.location)
                     
 
                     if result[2]==True:
@@ -205,12 +205,13 @@ while running:
                             playerMoved = True
                             GameBoard.statesSelected.append(GameBoard.toIndex(take_action[2]))
                             PF.get_last_move('Government',take_action[0],None)
+                            GameBoard.updateMovesSinceTransformation()
+
                             
                         
                         take_action = []
                         GameBoard.statesSelected = []
                         PF.reset_images()
-                        GameBoard.updateMovesSinceTransformation()
                         dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), "move", "N/A")
                         continue
 
