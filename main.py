@@ -204,30 +204,15 @@ while running:
                 elif take_action[0] == "heal" or take_action[0]=="kill":
                     if GameBoard.num_zombies() > 1 or not justStarted:
                         
-                        try:
-                            if take_action[0]=="heal":
-                                if GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==1:
-                                    dataCollector.numType1Cured+=1
-                                elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==2:
-                                    dataCollector.numType2Cured+=1
-                                elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==3:
-                                    dataCollector.numType3Cured+=1
-                            if take_action[0]=="kill":
-                                if GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==1:
-                                    dataCollector.numType1Killed+=1
-                                elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==2:
-                                    dataCollector.numType2Killed+=1
-                                elif GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage==3:
-                                    dataCollector.numType3Killed+=1
-                            dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), take_action[0], GameBoard.States[GameBoard.toIndex(take_action[1])].person.zombieStage)
-                        except:
-                            pass
-
+                        
+                        
+                        
+                        dataCollector.print_attributes()
                         justStarted = False
                         
+                        stage = GameBoard.States[GameBoard.toIndex(take_action[1])].person
                         
                         result = GameBoard.actionToFunction[take_action[0]](take_action[1])
-                        
                         print(result)
                         print(take_action[0])
                         if result[0] is not False:
@@ -239,7 +224,27 @@ while running:
                             PF.get_last_move('Government',None,None)
                         
                         PF.reset_images()
-                        GameBoard.updateMovesSinceTransformation()
+                        if playerMoved == True:
+                            GameBoard.updateMovesSinceTransformation()
+                            try:
+                                stage = stage.zombieStage
+                                if take_action[0]=="heal":
+                                    if stage==1:
+                                        dataCollector.numType1Cured+=1
+                                    elif stage==2:
+                                        dataCollector.numType2Cured+=1
+                                    elif stage==3:
+                                        dataCollector.numType3Cured+=1
+                                if take_action[0]=="kill":
+                                    if stage==1:
+                                        dataCollector.numType1Killed+=1
+                                    elif stage==2:
+                                        dataCollector.numType2Killed+=1
+                                    elif stage==3:
+                                        dataCollector.numType3Killed+=1
+                                dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), take_action[0], stage)
+                            except:
+                                pass
                         
                         
                         
