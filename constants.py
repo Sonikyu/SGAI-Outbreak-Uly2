@@ -1,5 +1,4 @@
 # Constants
-from regex import R
 
 
 ROWS = 6
