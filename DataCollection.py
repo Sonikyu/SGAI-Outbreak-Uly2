@@ -37,3 +37,5 @@ class DataCollection():
         print(f"Type 1 Killed: {self.numType1Killed}")
         print(f"Type 2 Killed: {self.numType2Killed}")
         print(f"Type 3 Killed: {self.numType3Killed}")
+        with open('LatestGameData.txt', "w"):
+            pass

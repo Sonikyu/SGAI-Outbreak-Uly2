@@ -98,7 +98,10 @@ while running:
                                 GameBoard.statesSelected.append(idx)
                             else:
                                 continue
-
+                        elif len(take_action)==2 and GameBoard.toIndex(take_action[1])==idx:
+                            take_action=[]
+                            GameBoard.statesSelected = []
+                            continue
                         # don't allow duplicate cells
                         if action not in take_action:
                             # prevent players from moving in invalid spaces
@@ -114,6 +117,7 @@ while running:
                                     PF.reset_images()
                             else:
                                 take_action.append(action)
+                        
             if event.type == pygame.QUIT:
                 running = False
 
