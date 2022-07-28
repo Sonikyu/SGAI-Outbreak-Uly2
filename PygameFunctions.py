@@ -49,8 +49,8 @@ def get_action(GameBoard: Board, pixel_x: int, pixel_y: int):
         and pixel_y >= QUIT_COORDS[1]
         and pixel_y <= QUIT_COORDS[1] + QUIT_DIMS[1]
     )
-    board_x = int((pixel_x - MARGIN) / CELL_DIMENSIONS[0])
-    board_y = int((pixel_y - MARGIN) / CELL_DIMENSIONS[1])
+    board_x = int((pixel_x - MARGIN_X) / CELL_DIMENSIONS[0])
+    board_y = int((pixel_y - MARGIN_Y) / CELL_DIMENSIONS[1])
     move_check = (
         board_x >= 0
         and board_x < GameBoard.columns
@@ -193,8 +193,8 @@ def build_grid(GameBoard: Board):
         screen,
         BLACK,
         [
-            MARGIN,
-            MARGIN,
+            MARGIN_X,
+            MARGIN_Y,
             LINE_WIDTH,
             grid_height + (LINE_WIDTH),
         ],
@@ -204,8 +204,8 @@ def build_grid(GameBoard: Board):
         screen,
         BLACK,
         [
-            MARGIN + grid_width,
-            MARGIN,
+            MARGIN_X + grid_width,
+            MARGIN_Y,
             LINE_WIDTH,
             grid_height + (LINE_WIDTH),
         ],
@@ -215,8 +215,8 @@ def build_grid(GameBoard: Board):
         screen,
         BLACK,
         [
-            MARGIN,
-            MARGIN + grid_height,
+            MARGIN_X,
+            MARGIN_Y + grid_height,
             grid_width + (LINE_WIDTH),
             LINE_WIDTH,
         ],
@@ -226,8 +226,8 @@ def build_grid(GameBoard: Board):
         screen,
         BLACK,
         [
-            MARGIN,
-            MARGIN,
+            MARGIN_X,
+            MARGIN_Y,
             grid_width + (LINE_WIDTH),
             LINE_WIDTH,
         ],
@@ -236,18 +236,18 @@ def build_grid(GameBoard: Board):
     pygame.draw.rect(
         screen,
         CELL_COLOR,
-        [MARGIN+LINE_WIDTH, MARGIN+LINE_WIDTH, grid_width-LINE_WIDTH, grid_height-LINE_WIDTH],
+        [MARGIN_X+LINE_WIDTH, MARGIN_Y+LINE_WIDTH, grid_width-LINE_WIDTH, grid_height-LINE_WIDTH],
     )
 
     # Draw the vertical lines
-    i = MARGIN + CELL_DIMENSIONS[0]
-    while i < MARGIN + grid_width:
-        pygame.draw.rect(screen, BLACK, [i, MARGIN, LINE_WIDTH, grid_height])
+    i = MARGIN_X + CELL_DIMENSIONS[0]
+    while i < MARGIN_X + grid_width:
+        pygame.draw.rect(screen, BLACK, [i, MARGIN_Y, LINE_WIDTH, grid_height])
         i += CELL_DIMENSIONS[0]
     # Draw the horizontal lines
-    i = MARGIN + CELL_DIMENSIONS[1]
-    while i < MARGIN + grid_height:
-        pygame.draw.rect(screen, BLACK, [MARGIN, i, grid_width, LINE_WIDTH])
+    i = MARGIN_Y + CELL_DIMENSIONS[1]
+    while i < MARGIN_Y + grid_height:
+        pygame.draw.rect(screen, BLACK, [MARGIN_X, i, grid_width, LINE_WIDTH])
         i += CELL_DIMENSIONS[1]
 
 
@@ -259,12 +259,12 @@ def display_people(GameBoard: Board):
         if GameBoard.States[x].person != None:
             p = GameBoard.States[x].person
             coords = (
-                int(x % GameBoard.rows) * CELL_DIMENSIONS[0] + MARGIN + 35,
-                int(x / GameBoard.columns) * CELL_DIMENSIONS[1] + MARGIN + 20,
+                int(x % GameBoard.rows) * CELL_DIMENSIONS[0] + MARGIN_X + 35,
+                int(x / GameBoard.columns) * CELL_DIMENSIONS[1] + MARGIN_Y + 20,
             )
             coords_no_margin = (
-                int(x % GameBoard.rows) * CELL_DIMENSIONS[0] + MARGIN+LINE_WIDTH,
-                int(x / GameBoard.columns) * CELL_DIMENSIONS[1] + MARGIN+LINE_WIDTH,
+                int(x % GameBoard.rows) * CELL_DIMENSIONS[0] + MARGIN_X+LINE_WIDTH,
+                int(x / GameBoard.columns) * CELL_DIMENSIONS[1] + MARGIN_Y+LINE_WIDTH,
             )
             if GameBoard.States[x].location in GameBoard.statesSelected:
                 square = "Assets/BlueSquare.png"
