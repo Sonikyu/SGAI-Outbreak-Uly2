@@ -152,9 +152,9 @@ def run(GameBoard: Board):
     display_reset_move_button()
 
     # draw the score board
-    display_text(f"Score: {constants.CURRENT_SCORE}", SCORE_COORDS, 32)
+    display_text(f"Score: {constants.CURRENT_SCORE}", SCORE_COORDS, 25)
     display_text(f"Last Move:"+str(PREVIOUS_MOVE), LAST_MOVE_COORDS, 25)
-    display_text(f"Steps Remaining: {100-constants.number_steps}", STEPS_COORDS, 25)
+    display_text(f"Steps Left: {100-constants.number_steps}", STEPS_COORDS, 25)
     display_text(f"QUIT?", QUIT_COORDS, 25)
     return pygame.event.get()
 
@@ -287,6 +287,7 @@ def display_people(GameBoard: Board):
 
 def display_cur_move(cur_move: List):
     # Display the current action
+    '''
     screen.blit(
         font.render("Your move is currently:", True, WHITE),
         CUR_MOVE_COORDS,
@@ -298,6 +299,7 @@ def display_cur_move(cur_move: List):
             CUR_MOVE_COORDS[1] + font.size("Your move is currently:")[1] * 2,
         ),
     )
+    '''
 
 
 def display_win_screen(dataCollector):
