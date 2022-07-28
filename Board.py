@@ -193,11 +193,12 @@ class Board:
 
         # Check if the destination is currently occupied
         if self.States[destination_idx].person is None:
+            constants.CURRENT_SCORE+=SCORE_VALUES["move"]
             self.States[destination_idx].person = self.States[start_idx].person
             self.States[start_idx].person = None
             return [True, destination_idx, None]
 
-        constants.CURRENT_SCORE+=SCORE_VALUES["move"]
+        
         return [False, destination_idx, None]
 
     def moveUp(self, coords: Tuple[int, int]) -> Tuple[bool, int]:
@@ -312,10 +313,11 @@ class Board:
         if p.isZombie and personAdjacent:
             global success_of_cure
             success_of_cure = p.get_cured()
+            constants.CURRENT_SCORE+=SCORE_VALUES["heal"]
         else:
             return [False, None, None]
         
-        constants.CURRENT_SCORE+=SCORE_VALUES["heal"]
+        
 
         return [True, i, success_of_cure]
 
@@ -336,10 +338,11 @@ class Board:
             p.kill_me()
             self.States[i].person = None
             p = None
+            constants.CURRENT_SCORE+=SCORE_VALUES["kill"]
         else:
             return [False, None, None]
         
-        constants.CURRENT_SCORE+=SCORE_VALUES["kill"]
+       
 
         return [True, i, True]
     def heuristic_action(self, optimum_state):
