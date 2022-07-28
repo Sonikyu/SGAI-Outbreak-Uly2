@@ -10,7 +10,7 @@ import QTrain as qt
 from DataCollection import DataCollection
 
 SELF_PLAY = True  # whether or not a human will be playing
-player_role = "Zombie"  # Valid options are "Government" and "Zombie"
+player_role = "Government"  # Valid options are "Government" and "Zombie"
 # Create the game board
 GameBoard = Board((ROWS, COLUMNS), player_role)
 qtrainer = qt.QTrain(GameBoard)
@@ -73,10 +73,12 @@ while running:
                         take_action.append(action)
                     else:
                         take_action = []
+                        GameBoard.statesSelected = []
                         take_action.append(action)
                     PF.display_curr_action(action)
                 elif action == "reset move":
                     take_action = []
+                    GameBoard.statesSelected = []
                     PF.reset_images()
                 elif action == "quit":
                     running = False
@@ -93,6 +95,7 @@ while running:
                                 == ROLE_TO_ROLE_BOOLEAN[player_role]
                             ):
                                 take_action.append("move")
+                                GameBoard.statesSelected.append(idx)
                             else:
                                 continue
 
@@ -107,6 +110,7 @@ while running:
                                 else:
                                     PF.get_last_move('Government', None,None)
                                     take_action = []
+                                    GameBoard.statesSelected = []
                                     PF.reset_images()
                             else:
                                 take_action.append(action)
@@ -176,6 +180,8 @@ while running:
                     result = GameBoard.actionToFunction[action](move_coord, prev_state.person.zombieStage)
 
                     PF.get_last_move('Zombie','bite',result[2])
+                    GameBoard.statesSelected.append(prev_state.location)
+                    
 
                     if result[2]==True:
                         dataCollector.numPeopleTurnedToZombies+=1
@@ -193,9 +199,11 @@ while running:
                         
                         if result[0] is not False:
                             playerMoved = True
+                            GameBoard.statesSelected.append(GameBoard.toIndex(take_action[2]))
                             
                         PF.get_last_move('Government',take_action[0],None)
                         take_action = []
+                        GameBoard.statesSelected = []
                         PF.reset_images()
                         GameBoard.updateMovesSinceTransformation()
                         dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), "move", "N/A")
@@ -226,6 +234,7 @@ while running:
                         PF.reset_images()
                         if playerMoved == True:
                             GameBoard.updateMovesSinceTransformation()
+                            GameBoard.statesSelected.append(GameBoard.toIndex(take_action[1]))
                             try:
                                 stage = stage.zombieStage
                                 if take_action[0]=="heal":
@@ -250,10 +259,11 @@ while running:
                         
                         
                         take_action = []
-                        
+                        GameBoard.statesSelected = []
                         continue
                     else:
                         take_action = []
+                        GameBoard.statesSelected = []
                         PF.reset_images()
 
                 elif take_action[0] == "bite":
@@ -263,6 +273,7 @@ while running:
                         playerMoved = True
                         
                     take_action = []
+                    GameBoard.statesSelected = []
                     PF.reset_images()
                     continue
 
@@ -272,6 +283,7 @@ while running:
             constants.number_steps+=1
             playerMoved = False
             take_action = []
+            GameBoard.statesSelected = []
             PF.reset_images()
             GameBoard.update() # UPDATE BOARD BEFORE ZOMBIE MOVE SO THE DELAY CAN HAPPEN
             
@@ -406,6 +418,7 @@ while running:
                 print("winCase")
 
             take_action = []
+            GameBoard.statesSelected = []
             PF.reset_images()
             print("Enemy turn")
             ta = ""

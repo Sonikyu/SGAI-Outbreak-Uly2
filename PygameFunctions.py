@@ -193,10 +193,10 @@ def build_grid(GameBoard: Board):
         screen,
         BLACK,
         [
-            MARGIN - LINE_WIDTH,
-            MARGIN - LINE_WIDTH,
+            MARGIN,
+            MARGIN,
             LINE_WIDTH,
-            grid_height + (2 * LINE_WIDTH),
+            grid_height + (LINE_WIDTH),
         ],
     )
     # right
@@ -205,9 +205,9 @@ def build_grid(GameBoard: Board):
         BLACK,
         [
             MARGIN + grid_width,
-            MARGIN - LINE_WIDTH,
+            MARGIN,
             LINE_WIDTH,
-            grid_height + (2 * LINE_WIDTH),
+            grid_height + (LINE_WIDTH),
         ],
     )
     # bottom
@@ -215,9 +215,9 @@ def build_grid(GameBoard: Board):
         screen,
         BLACK,
         [
-            MARGIN - LINE_WIDTH,
+            MARGIN,
             MARGIN + grid_height,
-            grid_width + (2 * LINE_WIDTH),
+            grid_width + (LINE_WIDTH),
             LINE_WIDTH,
         ],
     )
@@ -226,9 +226,9 @@ def build_grid(GameBoard: Board):
         screen,
         BLACK,
         [
-            MARGIN - LINE_WIDTH,
-            MARGIN - LINE_WIDTH,
-            grid_width + (2 * LINE_WIDTH),
+            MARGIN,
+            MARGIN,
+            grid_width + (LINE_WIDTH),
             LINE_WIDTH,
         ],
     )
@@ -236,7 +236,7 @@ def build_grid(GameBoard: Board):
     pygame.draw.rect(
         screen,
         CELL_COLOR,
-        [MARGIN, MARGIN, grid_width, grid_height],
+        [MARGIN+LINE_WIDTH, MARGIN+LINE_WIDTH, grid_width-LINE_WIDTH, grid_height-LINE_WIDTH],
     )
 
     # Draw the vertical lines
@@ -258,6 +258,21 @@ def display_people(GameBoard: Board):
     for x in range(len(GameBoard.States)):
         if GameBoard.States[x].person != None:
             p = GameBoard.States[x].person
+            coords = (
+                int(x % GameBoard.rows) * CELL_DIMENSIONS[0] + MARGIN + 35,
+                int(x / GameBoard.columns) * CELL_DIMENSIONS[1] + MARGIN + 20,
+            )
+            coords_no_margin = (
+                int(x % GameBoard.rows) * CELL_DIMENSIONS[0] + MARGIN+LINE_WIDTH,
+                int(x / GameBoard.columns) * CELL_DIMENSIONS[1] + MARGIN+LINE_WIDTH,
+            )
+            if GameBoard.States[x].location in GameBoard.statesSelected:
+                square = "Assets/BlueSquare.png"
+                if p.isZombie:
+                    square = "Assets/RedSquare.png"
+                display_image(screen, square, (100-LINE_WIDTH,100-LINE_WIDTH), coords_no_margin)
+                    
+            
             char = "Assets/" + IMAGE_ASSETS[0]
             if p.isZombie:
                 if p.zombieStage==1:
@@ -266,10 +281,7 @@ def display_people(GameBoard: Board):
                     char = "Assets/"+IMAGE_ASSETS[4]
                 else:
                     char = "Assets/" + IMAGE_ASSETS[2]
-            coords = (
-                int(x % GameBoard.rows) * CELL_DIMENSIONS[0] + MARGIN + 35,
-                int(x / GameBoard.columns) * CELL_DIMENSIONS[1] + MARGIN + 20,
-            )
+            
             display_image(screen, char, (35, 60), coords)
 
 
