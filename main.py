@@ -200,8 +200,9 @@ while running:
                         if result[0] is not False:
                             playerMoved = True
                             GameBoard.statesSelected.append(GameBoard.toIndex(take_action[2]))
+                            PF.get_last_move('Government',take_action[0],None)
                             
-                        PF.get_last_move('Government',take_action[0],None)
+                        
                         take_action = []
                         GameBoard.statesSelected = []
                         PF.reset_images()

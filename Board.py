@@ -433,8 +433,8 @@ class Board:
         # QTable[state][acti] = new_value
 
     def populate(self):
-        total = rd.randint(7, ((self.rows * self.columns) / 3))
-        poss = []
+        total = rd.randint(7, ((self.rows * self.columns) / 3)) #choose between 7 and 12
+        poss = [] 
         for x in range(len(self.States)):
             r = rd.randint(0, 100)
             if r < 30 and self.population < total:
