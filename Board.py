@@ -436,7 +436,7 @@ class Board:
         poss = []
         for x in range(len(self.States)):
             r = rd.randint(0, 100)
-            if r < 60 and self.population < total:
+            if r < 30 and self.population < total:
                 p = Person(False)
                 self.States[x].person = p
                 self.population = self.population + 1
