@@ -1,8 +1,8 @@
 
-        Data List: [{'step': 0, '# Zombies': 3, '# Humans': 9, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 0, '# Zombies': 3, '# Humans': 9, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 0, '# Zombies': 3, '# Humans': 9, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 0, '# Zombies': 3, '# Humans': 9, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}]
+        Data List: []
         Win: False
-        Starting Zombies: 3
-        Starting Humans: 9
+        Starting Zombies: 5
+        Starting Humans: 4
         Score: 0
         Total Moves: 0
         Num People Turned to Zombies: 0

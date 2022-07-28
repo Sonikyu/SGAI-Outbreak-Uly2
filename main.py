@@ -205,12 +205,13 @@ while running:
                             playerMoved = True
                             GameBoard.statesSelected.append(GameBoard.toIndex(take_action[2]))
                             PF.get_last_move('Government',take_action[0],None)
+                            GameBoard.updateMovesSinceTransformation()
+
                             
                         
                         take_action = []
                         GameBoard.statesSelected = []
                         PF.reset_images()
-                        GameBoard.updateMovesSinceTransformation()
                         dataCollector.addMove(constants.number_steps, len(GameBoard.getZombieStates()), len(GameBoard.getPlayerStates()), "move", "N/A")
                         continue
 
