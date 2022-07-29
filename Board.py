@@ -275,7 +275,7 @@ class Board:
 
     def bite(self, coords: Tuple[int, int], stage=3) -> Tuple[bool, int, bool]:
         i = self.toIndex(coords)
-        global success_of_bite
+        success_of_bite = False
         if (
             self.States[i].person is None
             or self.States[i].person.isZombie
@@ -301,6 +301,7 @@ class Board:
         If no person is selected, then return [False, None]
         if a person is cured, then return [True, index]
         """
+        success_of_cure = False
         i = self.toIndex(coords)
         if self.States[i].person is None:
             return [False, None, None]
@@ -311,7 +312,6 @@ class Board:
             if state != None and state.person != None and not state.person.isZombie:
                 personAdjacent = True
         if p.isZombie and personAdjacent:
-            global success_of_cure
             success_of_cure = p.get_cured()
             constants.CURRENT_SCORE+=SCORE_VALUES["heal"]
         else:

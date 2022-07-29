@@ -347,6 +347,7 @@ while running:
                         prev_state = optimum_state
                         optimum_state = optimum_state.get_nearest_person(GameBoard)[0]
                         move_coord = GameBoard.toCoord(optimum_state.location)
+                        print(move_coord)
                         result = GameBoard.actionToFunction[action](move_coord, prev_state.person.zombieStage)
                         
                         PF.get_last_move('Zombie','bite',result[2])
