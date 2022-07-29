@@ -436,22 +436,24 @@ class Board:
         # QTable[state][acti] = new_value
 
     def populate(self):
-        total = rd.randint(8, 12) #choose between 7 and 12
+        total = rd.randint(7, ((self.rows * self.columns) / 3)) #choose between 7 and 12
         poss = [] 
-        for x in range(total):
-            r = rd.randint(0,35)
-            p = Person(False)
-            self.States[r].person = p
-            self.population = self.population + 1
-            poss.append(r)
-
+        for x in range(len(self.States)):
+            r = rd.randint(0, 100)
+            if r < 30 and self.population < total:
+                p = Person(False)
+                self.States[x].person = p
+                self.population = self.population + 1
+                poss.append(x)
+            else:
+                self.States[x].person = None
         used = []
         amt_zombies = rd.randint(int(total/2)-1, int(total/2)+1)
         for x in range(amt_zombies):
             s = rd.randint(0, len(poss) - 1)
             if s not in used:
                 self.States[poss[s]].person.isZombie = True
-                self.States[poss[s]].person.zombieStage = rd.randint(2,3)
+                self.States[poss[s]].person.zombieStage = rd.randint(1,3)
                 used.append(s)
 
     def update(self):
