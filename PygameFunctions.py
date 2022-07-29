@@ -111,7 +111,7 @@ def get_last_move(player, move, success):
     else:
         if (success) :
             PREVIOUS_MOVE = ' ' + str(move) +' succeeded'
-        else:
+        elif(not success):
             PREVIOUS_MOVE = ' ' + str(move) +' failed '
         if (player == 'Government'):
             IS_TURN = False
@@ -157,17 +157,16 @@ def run(GameBoard: Board):
             display_image(screen, "Assets/yourturn.png", TURN_INDICATOR_DIMS, TURN_INDICATOR_COORDS)
         else:
             display_image(screen, "Assets/theirturn.png", TURN_INDICATOR_DIMS, TURN_INDICATOR_COORDS)
+        #static variables
+        display_text(f"Last Move:"+str(PREVIOUS_MOVE), LAST_MOVE_COORDS, 25) 
+        display_image(screen, "Assets/clear move icon.png", CURE_BITE_DIMS, CLEAR_COORDS)
         
-    else:
-        display_image(screen, "Assets/bite.png", CURE_BITE_DIMS, CURE_BITE_COORDS)
     display_people(GameBoard)
     #display_reset_move_button()
 
     #static ui 
-    display_image(screen, "Assets/clear move icon.png", CURE_BITE_DIMS, CLEAR_COORDS)
     display_image(screen, "Assets/key.png", KEY_DIMS, KEY_COORDS)
     display_text(f"Score: {constants.CURRENT_SCORE}", SCORE_COORDS, 25)
-    display_text(f"Last Move:"+str(PREVIOUS_MOVE), LAST_MOVE_COORDS, 25)
     display_text(f"Steps Left: {100-constants.number_steps}", STEPS_COORDS, 25)
     display_text(f"QUIT?", QUIT_COORDS, 25)
     return pygame.event.get()
