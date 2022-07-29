@@ -351,7 +351,7 @@ class Board:
             return "moveUp"
         if rd.random()<.9:
             nearest_person_info = optimum_state.get_nearest_person(self)
-            if nearest_person_info[1] == 1:
+            if nearest_person_info[1] == 1 and "bite" in poss_moves:
                     return "bite"
             
             person_is_isolated = True
