@@ -2,6 +2,7 @@ import numpy as np
 import random as rd
 import csv
 import constants
+import time
 
 episodes = 500
 steps_per_game = 100
@@ -60,7 +61,7 @@ class QTrain:
                     elif q in range(8,12) and rd.random() > 0.8:
                         max_q_state = curr_state
                         max_q_action = q - 4
-                    elif (rd.random() > 0.5 or q in range(4,12) or not DoubleQ) and len(curr_state.get_possible_player_actions(self.GameBoard)) > 1:
+                    elif (rd.random() > 0.1 or q in range(4,12) or not DoubleQ) and len(curr_state.get_possible_player_actions(self.GameBoard)) > 1:
                         max_q_state = curr_state
                         max_q_action = q
         
@@ -102,7 +103,7 @@ class QTrain:
                 self.qtable[state.location][action] = (1 - learning_rate) * self.qtable[
                     state.location][action] + learning_rate * (
                         reward +
-                        discount_rate * np.max(self.qtable[new_state_index]))
+                        discount_rate * np.max(self.qtable[state.location][action]))
             except IndexError:
                 print("q_table can't update")
             self.updateCSVFile()
@@ -168,7 +169,7 @@ class QTrain:
                     new_state_index = state.location
                 
 
-                new_state = self.GameBoard.States[new_state_index]
+                #new_state = self.GameBoard.States[new_state_index]
 
                 wasBitten = self.zombieMove()
 
@@ -177,7 +178,7 @@ class QTrain:
                 self.qtable[state.location][action] = (1 - learning_rate) * self.qtable[
                     state.location][action] + learning_rate * (
                         reward +
-                        discount_rate * np.max(self.qtable[new_state_index]))
+                        discount_rate * np.max(self.qtable[state.location][action]))
                 self.updateCSVFile()
 
                 if self.check_win(step) == True:
@@ -216,8 +217,8 @@ class QTrain:
             total_reward += constants.SCORE_VALUES["bite"]
         if success == False and action < 4:  # invalid move
             total_reward -= 1000
-        if success == True and action < 4:  # successful move
-            total_reward += constants.SCORE_VALUES["move"]
+        #if success == True and action < 4:  # successful move
+            #total_reward += constants.SCORE_VALUES["move"]
         if action in [4,5,6,7]:  # heal
             total_reward += constants.SCORE_VALUES["heal"]
         if action in [8,9,10,11]:  # kill
@@ -232,8 +233,8 @@ class QTrain:
             total_reward += constants.SCORE_VALUES["bite"]
         if success == False and action < 4:  # invalid move
             total_reward -= 1000
-        if success == True and action < 4:  # successful move
-            total_reward += constants.SCORE_VALUES["move"]
+        #if success == True and action < 4:  # successful move
+            #total_reward += constants.SCORE_VALUES["move"]
         if action in [4,5,6,7]:  # heal
             total_reward += constants.SCORE_VALUES["heal"]
         if action in [8,9,10,11]:  # kill

@@ -451,11 +451,10 @@ class Board:
         amt_zombies = rd.randint(3, 5)
         for x in range(amt_zombies):
             s = rd.randint(0, len(poss) - 1)
-            while s in used:
-                s = rd.randint(0, len(poss) - 1)
-            self.States[poss[s]].person.isZombie = True
-            self.States[poss[s]].person.zombieStage = 3
-            used.append(s)
+            if s not in used:
+                self.States[poss[s]].person.isZombie = True
+                self.States[poss[s]].person.zombieStage = rd.randint(1,3)
+                used.append(s)
 
     def update(self):
         """
