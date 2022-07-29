@@ -448,7 +448,7 @@ class Board:
             else:
                 self.States[x].person = None
         used = []
-        amt_zombies = rd.randint(3, 5)
+        amt_zombies = rd.randint(3, 7)
         for x in range(amt_zombies):
             s = rd.randint(0, len(poss) - 1)
             if s not in used:

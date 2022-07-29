@@ -206,24 +206,24 @@ class State:
         act = []
         x, y = GameBoard.toCoord(self.location)
         adjStates = self.get_adj_states(GameBoard)
-        if x<4 and GameBoard.States[GameBoard.toIndex((x+1, y))].person is None:
+        if x<=4 and GameBoard.States[GameBoard.toIndex((x+1, y))].person is None:
             act.append(0) # 0 = move right
-        if x>0 and GameBoard.States[GameBoard.toIndex((x-1, y))].person is None:
+        if x>=1 and GameBoard.States[GameBoard.toIndex((x-1, y))].person is None:
             act.append(1) # 1 = move left
-        if y<5 and GameBoard.States[GameBoard.toIndex((x, y+1))].person is None:
-            act.append(3)
-        if y>0 and GameBoard.States[GameBoard.toIndex((x, y-1))].person is None:
-            act.append(2)
-        if x<5 and GameBoard.States[GameBoard.toIndex((x+1, y))].person is not None and GameBoard.States[GameBoard.toIndex((x+1, y))].person.isZombie==True: # right
+        if y<=4 and GameBoard.States[GameBoard.toIndex((x, y+1))].person is None:
+            act.append(3) # 3 = move down
+        if y>=1 and GameBoard.States[GameBoard.toIndex((x, y-1))].person is None:
+            act.append(2) # 2 = move up
+        if x<=4 and GameBoard.States[GameBoard.toIndex((x+1, y))].person is not None and GameBoard.States[GameBoard.toIndex((x+1, y))].person.isZombie: # right
             act.append(4) # right
             act.append(8)
-        if x>0 and GameBoard.States[GameBoard.toIndex((x-1, y))].person is not None and GameBoard.States[GameBoard.toIndex((x-1, y))].person.isZombie==True: # right
+        if x>=1 and GameBoard.States[GameBoard.toIndex((x-1, y))].person is not None and GameBoard.States[GameBoard.toIndex((x-1, y))].person.isZombie: # right
             act.append(5) # left
             act.append(9)
-        if y<5 and GameBoard.States[GameBoard.toIndex((x, y+1))].person is not None and GameBoard.States[GameBoard.toIndex((x, y+1))].person.isZombie==True: # right
+        if y<=4 and GameBoard.States[GameBoard.toIndex((x, y+1))].person is not None and GameBoard.States[GameBoard.toIndex((x, y+1))].person.isZombie: # right
             act.append(7) # bottom
             act.append(11)
-        if y>0 and GameBoard.States[GameBoard.toIndex((x, y-1))].person is not None and GameBoard.States[GameBoard.toIndex((x, y-1))].person.isZombie==True: # right
+        if y>=1 and GameBoard.States[GameBoard.toIndex((x, y-1))].person is not None and GameBoard.States[GameBoard.toIndex((x, y-1))].person.isZombie: # right
             act.append(6) # top
             act.append(10)
         return act

@@ -50,15 +50,15 @@ class QTrain:
         player_states = possible_states  # contains all the states with people on it
         if(len(player_states) == 0):
             return
-        max_q_state = player_states[0]
-        max_q_action = 0
+        max_q_state = rd.choice(player_states)
+        max_q_action = rd.choice(max_q_state.get_possible_player_actions(self.GameBoard))
         for curr_state in player_states:  # 0 to 35
             for q in curr_state.get_possible_player_actions(self.GameBoard):  # 0 to 5
                 if self.qtable[curr_state.location][q] >= max_q_action:
-                    if q in range(4,8) and rd.random() > 0.8:
+                    if q in range(4,8) and rd.random() > 0.8 and q+4 in curr_state.get_possible_player_actions(self.GameBoard):
                         max_q_state = curr_state
                         max_q_action = q + 4
-                    elif q in range(8,12) and rd.random() > 0.8:
+                    elif q in range(8,12) and rd.random() > 0.8 and q-4 in curr_state.get_possible_player_actions(self.GameBoard):
                         max_q_state = curr_state
                         max_q_action = q - 4
                     elif (rd.random() > 0.1 or q in range(4,12) or not DoubleQ) and len(curr_state.get_possible_player_actions(self.GameBoard)) > 1:
@@ -83,6 +83,7 @@ class QTrain:
             action_str = "heal"
         if actions[action] == "killRight" or actions[action] == "killLeft" or actions[action] == "killUp" or actions[action] == "killDown":
             action_str = "kill"
+        print(str(coords) + ", " + action_str)
         #if rd.random() > 0.95:
         #   state = rd.choice(possible_states)
         #  action = rd.choice(state.get_possible_player_actions(self.GameBoard))
