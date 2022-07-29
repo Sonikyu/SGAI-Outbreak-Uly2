@@ -453,7 +453,7 @@ class Board:
             s = rd.randint(0, len(poss) - 1)
             if s not in used:
                 self.States[poss[s]].person.isZombie = True
-                self.States[poss[s]].person.zombieStage = rd.randint(1,3)
+                self.States[poss[s]].person.zombieStage = rd.randint(2,3)
                 used.append(s)
 
     def update(self):
