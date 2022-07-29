@@ -40,10 +40,10 @@ STEPS_COORDS = (30, 30)
 #STEPS_COORDS = (800, 750)
 CURRENT_SCORE = 0
 SCORE_VALUES = { # TEMPORARY VALUES
-    "heal":250,
+    "heal":500,
     "kill":-100,
     "move":-25,
-    "bite":-500,
+    "bite":-250,
     "repetitiveMove":-50
 
 

@@ -89,7 +89,7 @@ class State:
 
     def get_possible_moves(self, GameBoard):
         adj_states = self.get_adj_states(GameBoard)
-        poss_acts = ["moveRight", "moveLeft", "moveUp", "moveDown", "bite"]
+        poss_acts = ["moveRight", "moveLeft", "moveUp", "moveDown"]
 
         for state in adj_states:
             if state.person != None:
@@ -104,11 +104,12 @@ class State:
                     poss_acts.remove("moveUp")
                 elif other_coords[1] == self_coords[1] + 1:
                     poss_acts.remove("moveDown")
-            else:
-                if "bite" in poss_acts:
-                    poss_acts.remove("bite")
+                if "bite" not in poss_acts:
+                    poss_acts.append("bite")
+                
         
         self_coords = GameBoard.toCoord(self.location)
+        print(self_coords)
         if self_coords[0] == 5 and "moveRight" in poss_acts:
             poss_acts.remove("moveRight")
         if self_coords[0] == 0 and "moveLeft" in poss_acts:
@@ -188,7 +189,7 @@ class State:
         act = []
         x, y = GameBoard.toCoord(self.location)
         adjStates = self.get_adj_states(GameBoard)
-        if x<5 and GameBoard.States[GameBoard.toIndex((x+1, y))].person is None:
+        if x<4 and GameBoard.States[GameBoard.toIndex((x+1, y))].person is None:
             act.append(0) # 0 = move right
         if x>0 and GameBoard.States[GameBoard.toIndex((x-1, y))].person is None:
             act.append(1) # 1 = move left
