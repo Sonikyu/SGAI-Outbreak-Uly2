@@ -446,7 +446,7 @@ class Board:
             poss.append(r)
 
         used = []
-        amt_zombies = rd.randint(total-1, total+1)
+        amt_zombies = rd.randint(tota/2-1, total/2+1)
         for x in range(amt_zombies):
             s = rd.randint(0, len(poss) - 1)
             if s not in used:
