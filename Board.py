@@ -361,8 +361,8 @@ class Board:
             for state in nearest_person_info[0].get_adj_states(self):
                 if state.person != None and state.person.isZombie == False:
                     person_is_isolated = True
-            from_opt_to_person = optimum_state.get_direction_to(nearest_person_info[0], self)
-
+            from_opt_to_person = optimum_state.get_direction_to(nearest_person_info[0], self, poss_moves)
+            
             return from_opt_to_person
             # if person_is_isolated and from_opt_to_person in poss_moves:
             #     return from_opt_to_person

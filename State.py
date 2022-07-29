@@ -56,7 +56,7 @@ class State:
                 adj_states.append(state)
         return adj_states
 
-    def get_direction_to(self, other_state, GameBoard):
+    def get_direction_to(self, other_state, GameBoard, poss_acts):
         self_coords = GameBoard.toCoord(self.location)
         other_coords = GameBoard.toCoord(other_state.location)
         
@@ -67,8 +67,26 @@ class State:
         rightCoords = GameBoard.toIndex((self_coords[0]+1, self_coords[1]))
         leftCoords = GameBoard.toIndex((self_coords[0]-1, self_coords[1]))
 
+        min_arr = []
+        if "moveUp" in poss_acts:
+            min_arr.append(other_state.distance(GameBoard, upCoords))
+        else:
+            min_arr.append(1e8)
+        if "moveDown" in poss_acts:
+            min_arr.append(other_state.distance(GameBoard, downCoords))
+        else:
+            min_arr.append(1e8)
+        if "moveRight" in poss_acts:
+            min_arr.append(other_state.distance(GameBoard, rightCoords))
+        else:
+            min_arr.append(1e8)
+        if "moveLeft" in poss_acts:
+            min_arr.append(other_state.distance(GameBoard, leftCoords))
+        else:
+            min_arr.append(1e8)
 
-        min_coords = np.argmin(np.array([other_state.distance(GameBoard, upCoords), other_state.distance(GameBoard, downCoords),other_state.distance(GameBoard, rightCoords),other_state.distance(GameBoard, leftCoords)]))
+
+        min_coords = np.argmin(np.array(min_arr))
         if min_coords == 0:
             dir="moveUp"
         elif min_coords == 1:
@@ -109,7 +127,6 @@ class State:
                 
         
         self_coords = GameBoard.toCoord(self.location)
-        print(self_coords)
         if self_coords[0] == 5 and "moveRight" in poss_acts:
             poss_acts.remove("moveRight")
         if self_coords[0] == 0 and "moveLeft" in poss_acts:
