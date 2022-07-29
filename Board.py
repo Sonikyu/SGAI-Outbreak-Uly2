@@ -436,7 +436,7 @@ class Board:
         # QTable[state][acti] = new_value
 
     def populate(self):
-        total = rd.randint(8, 13) #choose between 7 and 12
+        total = rd.randint(8, 12) #choose between 7 and 12
         poss = [] 
         for x in range(total):
             r = rd.randint(0,35)
@@ -444,9 +444,9 @@ class Board:
             self.States[r].person = p
             self.population = self.population + 1
             poss.append(r)
-            
+
         used = []
-        amt_zombies = rd.randint(3, 7)
+        amt_zombies = rd.randint(total-1, total+1)
         for x in range(amt_zombies):
             s = rd.randint(0, len(poss) - 1)
             if s not in used:
