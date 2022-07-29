@@ -53,7 +53,7 @@ class QTrain:
         max_q_action = 0
         for curr_state in player_states:  # 0 to 35
             for q in curr_state.get_possible_player_actions(self.GameBoard):  # 0 to 5
-                if self.qtable[curr_state.location][q] > max_q_action:
+                if self.qtable[curr_state.location][q] >= max_q_action:
                     if q in range(4,8) and rd.random() > 0.8:
                         max_q_state = curr_state
                         max_q_action = q + 4
@@ -111,6 +111,7 @@ class QTrain:
     def train(self):
         action_list = []
         for episode in range(episodes):
+            print(f"Episode {episode}")
             self.GameBoard.resetBoard()
             self.GameBoard.populate()
             for step in range(steps_per_game):
