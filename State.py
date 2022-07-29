@@ -109,7 +109,7 @@ class State:
                 
         
         self_coords = GameBoard.toCoord(self.location)
-        print(self_coords)
+        #print(self_coords)
         if self_coords[0] == 5 and "moveRight" in poss_acts:
             poss_acts.remove("moveRight")
         if self_coords[0] == 0 and "moveLeft" in poss_acts:
