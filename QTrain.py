@@ -54,7 +54,13 @@ class QTrain:
         for curr_state in player_states:  # 0 to 35
             for q in curr_state.get_possible_player_actions(self.GameBoard):  # 0 to 5
                 if self.qtable[curr_state.location][q] > max_q_action:
-                    if (rd.random() > 0.9 or q in range(5,12) or not DoubleQ) and len(curr_state.get_possible_player_actions(self.GameBoard)) > 1:
+                    if q in range(4,8) and rd.random() > 0.8:
+                        max_q_state = curr_state
+                        max_q_action = q + 4
+                    elif q in range(8,12) and rd.random() > 0.8:
+                        max_q_state = curr_state
+                        max_q_action = q - 4
+                    elif (rd.random() > 0.5 or q in range(4,12) or not DoubleQ) and len(curr_state.get_possible_player_actions(self.GameBoard)) > 1:
                         max_q_state = curr_state
                         max_q_action = q
         
@@ -62,6 +68,7 @@ class QTrain:
         action = max_q_action
         
         coords = self.GameBoard.toCoord(state.location)
+        print(action)
         action_str = actions[action]
         if actions[action] == "healRight" or actions[action] == "killRight":
             coords = (coords[0] + 1, coords[1])
@@ -221,15 +228,15 @@ class QTrain:
     def assign_reward_realtime(self, success, action, wasBitten):
         total_reward = 0
         if wasBitten == True:
-            total_reward -= 500
+            total_reward += constants.SCORE_VALUES["bite"]
         if success == False and action < 4:  # invalid move
             total_reward -= 1000
         if success == True and action < 4:  # successful move
-            total_reward += -25
+            total_reward += constants.SCORE_VALUES["move"]
         if action in [4,5,6,7]:  # heal
-            total_reward += 1000
+            total_reward += constants.SCORE_VALUES["heal"]
         if action in [8,9,10,11]:  # kill
-            total_reward -= 250
+            total_reward += constants.SCORE_VALUES["kill"]
         return total_reward
 
     def check_win(self, step):
