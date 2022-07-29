@@ -1,14 +1,14 @@
 
-        Data List: [{'step': 1, '# Zombies': 5, '# Humans': 2, 'Move': 'moveUp', 'Enemy Cured/Killed': 0}, {'step': 2, '# Zombies': 4, '# Humans': 3, 'Move': 'heal', 'Enemy Cured/Killed': 2}, {'step': 3, '# Zombies': 3, '# Humans': 3, 'Move': 'kill', 'Enemy Cured/Killed': 3}, {'step': 4, '# Zombies': 2, '# Humans': 4, 'Move': 'heal', 'Enemy Cured/Killed': 2}, {'step': 5, '# Zombies': 1, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 2}, {'step': 6, '# Zombies': 1, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 7, '# Zombies': 1, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 1}, {'step': 8, '# Zombies': 1, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 1}, {'step': 9, '# Zombies': 1, '# Humans': 5, 'Move': 'moveRight', 'Enemy Cured/Killed': 0}, {'step': 10, '# Zombies': 1, '# Humans': 5, 'Move': 'moveLeft', 'Enemy Cured/Killed': 0}, {'step': 11, '# Zombies': 0, '# Humans': 5, 'Move': 'kill', 'Enemy Cured/Killed': 3}]
+        Data List: [{'step': 1, '# Zombies': 4, '# Humans': 6, 'Move': 'heal', 'Enemy Cured/Killed': 1}, {'step': 2, '# Zombies': 3, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 1}, {'step': 3, '# Zombies': 3, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 1}, {'step': 4, '# Zombies': 3, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 1}, {'step': 5, '# Zombies': 2, '# Humans': 7, 'Move': 'kill', 'Enemy Cured/Killed': 3}, {'step': 6, '# Zombies': 2, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 1}, {'step': 7, '# Zombies': 2, '# Humans': 7, 'Move': 'moveUp', 'Enemy Cured/Killed': 0}, {'step': 8, '# Zombies': 1, '# Humans': 7, 'Move': 'kill', 'Enemy Cured/Killed': 3}, {'step': 9, '# Zombies': 1, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 10, '# Zombies': 2, '# Humans': 6, 'Move': 'moveLeft', 'Enemy Cured/Killed': 0}, {'step': 11, '# Zombies': 2, '# Humans': 6, 'Move': 'moveRight', 'Enemy Cured/Killed': 0}, {'step': 12, '# Zombies': 2, '# Humans': 6, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 13, '# Zombies': 3, '# Humans': 5, 'Move': 'moveUp', 'Enemy Cured/Killed': 0}, {'step': 14, '# Zombies': 3, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 15, '# Zombies': 3, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 16, '# Zombies': 4, '# Humans': 4, 'Move': 'moveDown', 'Enemy Cured/Killed': 0}, {'step': 17, '# Zombies': 3, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 2}, {'step': 18, '# Zombies': 2, '# Humans': 6, 'Move': 'heal', 'Enemy Cured/Killed': 2}, {'step': 19, '# Zombies': 2, '# Humans': 6, 'Move': 'moveDown', 'Enemy Cured/Killed': 0}, {'step': 20, '# Zombies': 2, '# Humans': 6, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 21, '# Zombies': 3, '# Humans': 5, 'Move': 'moveUp', 'Enemy Cured/Killed': 0}, {'step': 22, '# Zombies': 2, '# Humans': 6, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 23, '# Zombies': 1, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 2}, {'step': 24, '# Zombies': 1, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 25, '# Zombies': 1, '# Humans': 6, 'Move': 'kill', 'Enemy Cured/Killed': 1}, {'step': 26, '# Zombies': 0, '# Humans': 6, 'Move': 'kill', 'Enemy Cured/Killed': 3}]
         Win: True
-        Starting Zombies: 5
-        Starting Humans: 2
-        Score: 1350
-        Total Moves: 11
-        Num People Turned to Zombies: 2
-        Type 1 Cured Attempts: 2
+        Starting Zombies: 4
+        Starting Humans: 6
+        Score: 3825
+        Total Moves: 26
+        Num People Turned to Zombies: 11
+        Type 1 Cured Attempts: 5
         Type 2 Cured Attempts: 3
-        Type 3 Cured Attempts: 1
-        Type 1 Killed: 0
+        Type 3 Cured Attempts: 7
+        Type 1 Killed: 1
         Type 2 Killed: 0
-        Type 3 Killed: 2
+        Type 3 Killed: 3

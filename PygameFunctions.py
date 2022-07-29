@@ -169,6 +169,9 @@ def run(GameBoard: Board):
     display_text(f"Score: {constants.CURRENT_SCORE}", SCORE_COORDS, 25)
     display_text(f"Steps Left: {100-constants.number_steps}", STEPS_COORDS, 25)
     display_text(f"QUIT?", QUIT_COORDS, 25)
+    display_text(f"Kill", KILL_TEXT_COORD, 25)
+    display_text(f"Cure", CURE_TEXT_COORD, 25)
+    display_text(f"Reset", RESET_TEXT_COORD, 25)
     return pygame.event.get()
 
 def display_reset_move_button():
