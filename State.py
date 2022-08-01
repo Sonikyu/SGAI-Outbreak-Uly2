@@ -122,7 +122,7 @@ class State:
                     poss_acts.remove("moveUp")
                 elif other_coords[1] == self_coords[1] + 1:
                     poss_acts.remove("moveDown")
-                if "bite" not in poss_acts:
+                if "bite" not in poss_acts and state.person.isZombie==False:
                     poss_acts.append("bite")
                 
         
@@ -148,7 +148,7 @@ class State:
         dist = 100
         nearest_person_state = None
         for person in people_states:
-            if self.distance(GameBoard, person.location) < dist:
+            if self.distance(GameBoard, person.location) < dist and person.person.isZombie==False:
                 dist = self.distance(GameBoard, person.location)
                 nearest_person_state = person
         return [nearest_person_state, dist]
