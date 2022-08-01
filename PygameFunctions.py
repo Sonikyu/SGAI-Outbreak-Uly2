@@ -160,6 +160,9 @@ def run(GameBoard: Board):
         #static variables
         display_text(f"Last Move:"+str(PREVIOUS_MOVE), LAST_MOVE_COORDS, 25) 
         display_image(screen, "Assets/clear move icon.png", CURE_BITE_DIMS, CLEAR_COORDS)
+        display_text(f"Kill", KILL_TEXT_COORD, 25)
+        display_text(f"Cure", CURE_TEXT_COORD, 25)
+        display_text(f"Reset", RESET_TEXT_COORD, 25)
         
     display_people(GameBoard)
     #display_reset_move_button()
@@ -169,9 +172,6 @@ def run(GameBoard: Board):
     display_text(f"Score: {constants.CURRENT_SCORE}", SCORE_COORDS, 25)
     display_text(f"Steps Left: {100-constants.number_steps}", STEPS_COORDS, 25)
     display_text(f"QUIT?", QUIT_COORDS, 25)
-    display_text(f"Kill", KILL_TEXT_COORD, 25)
-    display_text(f"Cure", CURE_TEXT_COORD, 25)
-    display_text(f"Reset", RESET_TEXT_COORD, 25)
     return pygame.event.get()
 
 def display_reset_move_button():
