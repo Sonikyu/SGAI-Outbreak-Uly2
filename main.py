@@ -225,6 +225,8 @@ while running:
                         justStarted = False
                         
                         stage = GameBoard.States[GameBoard.toIndex(take_action[1])].person
+                        if stage:
+                            stage = stage.zombieStage
                         
                         result = GameBoard.actionToFunction[take_action[0]](take_action[1])
                         print(result)
@@ -242,7 +244,6 @@ while running:
                             GameBoard.updateMovesSinceTransformation()
                             GameBoard.statesSelected.append(GameBoard.toIndex(take_action[1]))
                             try:
-                                stage = stage.zombieStage
                                 if take_action[0]=="heal":
                                     if stage==1:
                                         dataCollector.numType1Cured+=1

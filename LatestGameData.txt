@@ -1,14 +1,14 @@
 
-        Data List: [{'step': 0, '# Zombies': 5, '# Humans': 7, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 1, '# Zombies': 6, '# Humans': 6, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 2, '# Zombies': 7, '# Humans': 5, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 3, '# Zombies': 8, '# Humans': 4, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 4, '# Zombies': 8, '# Humans': 4, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 5, '# Zombies': 8, '# Humans': 4, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 6, '# Zombies': 8, '# Humans': 4, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 7, '# Zombies': 8, '# Humans': 4, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 8, '# Zombies': 8, '# Humans': 4, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 9, '# Zombies': 9, '# Humans': 3, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 10, '# Zombies': 10, '# Humans': 2, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 11, '# Zombies': 11, '# Humans': 1, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 12, '# Zombies': 11, '# Humans': 1, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 13, '# Zombies': 11, '# Humans': 1, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 14, '# Zombies': 11, '# Humans': 1, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 15, '# Zombies': 11, '# Humans': 1, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}]
-        Win: False
-        Starting Zombies: 5
-        Starting Humans: 7
-        Score: -4950
-        Total Moves: 16
-        Num People Turned to Zombies: 12
-        Type 1 Cured Attempts: 0
-        Type 2 Cured Attempts: 0
-        Type 3 Cured Attempts: 0
+        Data List: [{'step': 0, '# Zombies': 3, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 2}, {'step': 1, '# Zombies': 3, '# Humans': 5, 'Move': 'heal', 'Enemy Cured/Killed': 1}, {'step': 2, '# Zombies': 2, '# Humans': 6, 'Move': 'heal', 'Enemy Cured/Killed': 2}, {'step': 3, '# Zombies': 1, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 4, '# Zombies': 1, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 5, '# Zombies': 1, '# Humans': 7, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 6, '# Zombies': 2, '# Humans': 6, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 7, '# Zombies': 2, '# Humans': 6, 'Move': 'move', 'Enemy Cured/Killed': 'N/A'}, {'step': 8, '# Zombies': 1, '# Humans': 7, 'Move': 'heal', 'Enemy Cured/Killed': 3}, {'step': 9, '# Zombies': 0, '# Humans': 7, 'Move': 'kill', 'Enemy Cured/Killed': 2}]
+        Win: True
+        Starting Zombies: 4
+        Starting Humans: 4
+        Score: 1600
+        Total Moves: 10
+        Num People Turned to Zombies: 2
+        Type 1 Cured Attempts: 1
+        Type 2 Cured Attempts: 2
+        Type 3 Cured Attempts: 3
         Type 1 Killed: 0
-        Type 2 Killed: 0
+        Type 2 Killed: 1
         Type 3 Killed: 0
