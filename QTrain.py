@@ -4,7 +4,7 @@ import csv
 import constants
 import time
 
-episodes = 500
+episodes = 10000
 steps_per_game = 100
 
 #Update qtable Values
