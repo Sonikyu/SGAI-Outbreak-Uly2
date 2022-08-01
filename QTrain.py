@@ -108,7 +108,7 @@ class QTrain:
             except IndexError:
                 print("q_table can't update")
             self.updateCSVFile()
-        return action_str, stage
+        return action_str, stage, temp
 
     def train(self):
         action_list = []

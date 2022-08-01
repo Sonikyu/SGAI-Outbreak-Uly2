@@ -6,10 +6,14 @@ class DataCollection():
         self.numType1Cured = 0 # these are attempts
         self.numType2Cured = 0
         self.numType3Cured = 0
+        self.numType1Success = 0
+        self.numType2Success = 0
+        self.numType3Success = 0
         self.numType1Killed = 0
         self.numType2Killed = 0
         self.numType3Killed = 0
         self.numPeopleTurnedToZombies = 0
+        self.numBiteAttempts = 0
         self.didWin = False
         self.totalMoves = 0
         self.totalScore = 0
@@ -32,9 +36,13 @@ class DataCollection():
         Score: {self.totalScore}
         Total Moves: {self.totalMoves}
         Num People Turned to Zombies: {self.numPeopleTurnedToZombies}
+        Num Bite Attempts: {self.numBiteAttempts}
         Type 1 Cured Attempts: {self.numType1Cured}
         Type 2 Cured Attempts: {self.numType2Cured}
         Type 3 Cured Attempts: {self.numType3Cured}
+        Type 1 Cured Success: {self.numType1Success}
+        Type 2 Cured Success: {self.numType2Success}
+        Type 3 Cured Success: {self.numType3Success}
         Type 1 Killed: {self.numType1Killed}
         Type 2 Killed: {self.numType2Killed}
         Type 3 Killed: {self.numType3Killed}"""

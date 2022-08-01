@@ -150,7 +150,7 @@ while running:
                 continue
             constants.number_steps+=1
 
-            move, stage = qtrainer.chooseMove(GameBoard.getPlayerStates())
+            move, stage, success = qtrainer.chooseMove(GameBoard.getPlayerStates())
 
             if move == "heal":
                 if stage==1:
@@ -159,6 +159,14 @@ while running:
                     dataCollector.numType2Cured+=1
                 if stage==3:
                     dataCollector.numType3Cured+=1
+                if success == True:
+                    if stage==1:
+                        dataCollector.numType1Success+=1
+                    elif stage==2:
+                        dataCollector.numType2Success+=1
+                    elif stage==3:
+                        dataCollector.numType3Success+=1
+
             if move=="kill":
                 if stage==1:
                     dataCollector.numType1Killed+=1
@@ -186,7 +194,7 @@ while running:
                     PF.get_last_move('Zombie','bite',result[2])
                     # GameBoard.statesSelected.append(prev_state.location)
                     
-
+                    dataCollector.numBiteAttempts+=1
                     if result[2]==True:
                         dataCollector.numPeopleTurnedToZombies+=1
                 else:
@@ -251,6 +259,13 @@ while running:
                                         dataCollector.numType2Cured+=1
                                     elif stage==3:
                                         dataCollector.numType3Cured+=1
+                                    if result[2] == True:
+                                        if stage==1:
+                                            dataCollector.numType1Success+=1
+                                        elif stage==2:
+                                            dataCollector.numType2Success+=1
+                                        elif stage==3:
+                                            dataCollector.numType3Success+=1
                                 if take_action[0]=="kill":
                                     if stage==1:
                                         dataCollector.numType1Killed+=1
@@ -353,6 +368,7 @@ while running:
                         
                         PF.get_last_move('Zombie','bite',result[2])
                         print(result)
+                        dataCollector.numBiteAttempts+=1
                         if result[2]==True:
                             dataCollector.numPeopleTurnedToZombies+=1
                     else:
